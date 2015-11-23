@@ -1,0 +1,33 @@
+Indexer.java :
+
+	Input 	: 	tccorpus.txt
+	Output	: 	index.out (containing)
+				- HashMap 	: 	inverted index for each word in tccorpus.txt
+				- HashMap 	: 	count of tokens in each document
+ 	Data Structure	:
+ 		- invertedIndexMap	: 	Its a HashMap of each word in tccorpus.txt as key and its value as Hashmap of each document id as key and the count of each word in the document as value
+ 		- docCountMap	  	:	Its a HashMap of each document id in tccorpus.txt as key and the count of tokens in that document as value
+ 	Implementation	:
+		- Read each line of the given corpus file.
+		- Differentiate document's starting lines by searching for "# " in the line and get the document id
+		- Add every word in rest of the lines to invertedIndexMap with the count of that word in every document as a value.
+		- Do not consider the word if its just a number. check for exception by parseInt of the string. 
+		- Meanwhile also add document id and number of tokens in that doc to docCountMap.
+		- Write both the objects to index.out using ObjectOutputStream.
+	   	
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Bm25.java :
+
+	Input 	: 	-	index.out from indexer.java
+				-	queries.txt
+	Output	: 	results.eval (containing top 100 document id and their bm25 score for each query) 
+
+ 	Data Structures:
+  		- bm25Map		:	HashMap with document id as key and bm25 score as value.
+  		- queryIndexMap	:	HashMap similar to invertedIndexMap for each word in each query.
+ 	Implementation:
+	  	- Read index.out file that is created by Indexer.java and store them as the same HashMaps.
+	  	- Create queryIndexMap similar to invertedIndexMap for each word in the query.
+	  	- For each document in each word in each query calculate the bm25 score using the given formula.
+	  	- for every query sort bm25Map and print the top 100 documents with maximum bm25 score.

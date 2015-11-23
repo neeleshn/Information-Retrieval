@@ -1,0 +1,18 @@
+
+IrHw4.java
+	Input
+		- some jar files.
+	Steps to Run
+		- In terminal cd to the project directory
+		- cd src/
+		- javac -cp "lib/*" com/IrHw4.java
+		- java -cp ".:lib/*" com.IrHw4
+	Output
+		- top100.txt : Four lists (one per query) each containing at MOST 100 docIDs ranked by score
+		- termFrequency.txt : A sorted (by frequency) list of (term, term_freq pairs)
+	Additional Files
+		- graph.xls / graph.xlsx : a graph with y axis, probability of each term's occurance and x axis, rank of the terms.
+		- Comparision q5.txt : A table comparing the total number of documents retrieved per query using Lucene’s scoring function vs. using your search engine (index with BM25) from the previous assignment
+
+
+

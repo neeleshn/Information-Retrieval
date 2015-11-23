@@ -1,0 +1,55 @@
+Important Points in Short:
+	1. Run the program by following commands in terminal
+		- cd CS6200/src
+		- javac -cp jsoup-1.8.3.jar com/assignments/assignment1/WebCrawlerMain.java
+		- java -cp .:jsoup-1.8.3.jar com/assignments/assignment1/WebCrawlerMain
+	2. 2 output files. “concordance.txt” for focused crawler with keyphrase and “unfocused.txt” without keyphrase.
+	3. The program is focused crawler by default. To make it unfocused, comment line 100 in WebCrawlerMain.java
+	4. Situations handled by the crawler.
+		- Checks for presence of /wiki/ and absence of ‘:’.
+		- Redirects url so as to not to crawl similar pages.
+		- Removes the #tags in the Urls and checks for duplicates.
+		- case insensitive checking of keyphrase in page content.
+
+
+How to Run the Program:
+	1. Download “Assignment1.zip” archive file.(Will be mostly downloaded in “Downloads” directory”)
+	2. Extract the archive file
+	*3. The program by default is a focused crawler searching for the string “concordance”.
+	*4. To make it unfocussed, comment the line 100 in “CS6200/src/com/assignments/assignment1/WebCrawlerMain.java” which says ‘keyphrase=“concordance”’ by putting “//“ at start of the line.
+	5. In case of focused crawler the output file is “concordance.txt” with its first mentioning the proportion of relevant urls to irrelevant urls.
+	6. In case of unfocused crawler the output file is “unfocused.txt”
+	7. Open Terminal and go to the path of the extracted file and enter the following commands.
+		- cd CS6200/src
+		- javac -cp jsoup-1.8.3.jar com/assignments/assignment1/WebCrawlerMain.java
+		- java -cp .:jsoup-1.8.3.jar com/assignments/assignment1/WebCrawlerMain
+	8. The Programs starts executing printing the count of the particular urls, the depth of the url and the url itself.
+	9. The program ends with “***The End***” string and creates the output file.
+
+
+Structure of the Programs:
+	1. Its a single file program: WebCrawlerMain.java inside “CS6200/src/com/assignments/assignment1/“ directory.
+	2. Jsoup external library is used for parsing the html pages.
+	3. The programs starts by adding the seed page “https://en.wikipedia.org/wiki/Hugh_of_Saint-Cher” to the array.
+	4. In case of focused crawler the crawler starts crawling all the link in the seed page and so on by searching for the keyphrase mentioned in line 100.
+	5. Comment line 100 to make it an unfocused crawler.
+
+
+Variables of WebCrawlerMain.java
+	1. Arraylist<String> urlArray : which stores all the relevant urls along with indexing.(purpose of using : indexing)
+	2. Arraylist<Integer> depthArray : which stores the depth of the corresponding url in urlArray.
+	3. HashSet<String> urlSet : stores all the relevant urls as in urlArray.(purpose of using : fast searching)
+	4. HashSet<String> totalUrlSet : stores all the urls crawled.(purpose of using : find out proportion of relevant to total urls crawled)
+	5. String keyphrase : which is set to concordance at line 100. Comment that line to make it unfocused crawler.
+
+
+Functions of WebCrawlerMain.java
+	1. logger(): Function which writes the contents of urlArray to output file.
+	2. addToArrays(): Function which adds the relevant urls to urlArray, urlSet, depthArray.
+	3. getFinalUrl(): Function which takes urls. Finds its redirected url, checks if satisfies the predefined conditions like “/wiki/“ and ‘:’
+	4. parser(): The main crawling function which calls the above functions. Crawls through the urls and checks for the mentioned keyphrase.
+	5. main(): Program starts here with seed page and keyphrase being set here and calling rest of the functions.
+
+
+
+
